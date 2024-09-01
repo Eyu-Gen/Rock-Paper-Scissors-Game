@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --scissorsGradient1: hsl(39, 89%, 49%);
+    --scissorsGradient2: hsl(40, 84%, 53%);
+    --paperGradient1: hsl(230, 89%, 62%);
+    --paperGradient2: hsl(230, 89%, 65%);
+    --rockGradient1: hsl(349, 71%, 52%);
+    --rockGradient2: hsl(349, 70%, 56%);
+    --lizardGradient1: hsl(261, 73%, 60%);
+    --lizardGradient2: hsl(261, 72%, 63%);
+    --Cyan1: hsl(189, 59%, 53%);
+    --Cyan2: hsl(189, 58%, 57%);
+    --darkText: hsl(229, 25%, 31%);
+    --scoreText: hsl(229, 64%, 46%);
+    --headerOutline: hsl(217, 16%, 45%);
+    --backgroundRadialGradient1: hsl(214, 47%, 23%);
+    --backgroundRadialGradient2: hsl(237, 49%, 15%);
+    --fontFamily: Barlow Semi Condensed;
+}
+
+.imageSection {
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, var(--backgroundRadialGradient1), var(--backgroundRadialGradient2));
+    user-select: none;
+}
+
+main {
+    font-family: var(--fontFamily);
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+
+#scoreBoard {
+    width: 60%;
+    border: 3px solid var(--headerOutline);
+    border-radius: 10px;
+    margin-bottom: 100px;
+
+    .gameName {
+        color: white;
+        width: 20%;
+        line-height: 90%;
+    }
+
+    .scores {
+        border: 1px solid white;
+        width: 15%;
+        background-color: white;
+        border-radius: 10px;
+        flex-direction: column;
+        padding: 10px;
+
+        .scoreTitle {
+            color: var(--scoreText);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .scorePoint {
+            font-size: 50px;
+            font-weight: bold;
+            color: var(--darkText);
+        }
+    }
+}
+
+#chooseOneContainer {
+    position: relative;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    .bgImage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+    }
+
+    .upperOptions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lowerOptions {
+        width: 100%;
+    }
+
+    .optionBox {
+        width: 30%;
+        aspect-ratio: 1/1;
+        background-color: white;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: inset 0px -5px 1px rgba(52, 52, 52, 0.459);
+
+        .imageSection {
+            width: 45px;
+        }
+    }
+
+    #paperBox {
+        outline: 20px solid var(--paperGradient1);
+    }
+
+    #scissorsBox {
+        outline: 20px solid var(--scissorsGradient1);
+    }
+
+    #rockBox {
+        outline: 20px solid var(--rockGradient1);
+    }
+}
