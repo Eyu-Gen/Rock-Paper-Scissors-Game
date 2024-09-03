@@ -37,10 +37,14 @@
     justify-content: center;
 }
 
-.button{
-    &:hover{
+.button {
+    &:hover {
         cursor: pointer;
     }
+}
+
+.animation {
+    animation: scaleAnimation 1s infinite;
 }
 
 body {
@@ -76,39 +80,37 @@ main {
     width: 60%;
     border: 3px solid var(--headerOutline);
     border-radius: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 
     .gameName {
         color: white;
         width: 20%;
         line-height: 90%;
+        font-size: 30px;
+        font-weight: bold;
     }
 
-    .scores {
-        border: 1px solid white;
+    .imageSection {
         width: 15%;
-        background-color: white;
-        border-radius: 10px;
-        flex-direction: column;
-        padding: 10px;
-
-        .scoreTitle {
-            color: var(--scoreText);
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .scorePoint {
-            font-size: 50px;
-            font-weight: bold;
-            color: var(--darkText);
-        }
+        height: 100%;
     }
 }
 
+#paperBox {
+    outline: 20px solid var(--paperGradient1);
+}
+
+#scissorsBox {
+    outline: 20px solid var(--scissorsGradient1);
+}
+
+#rockBox {
+    outline: 20px solid var(--rockGradient1);
+}
+
 #chooseOneContainer {
-    position: relative;
     width: 30%;
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -144,26 +146,102 @@ main {
             width: 45px;
         }
 
-        &:hover{
+        &:hover {
             cursor: pointer;
             transform: scale(1.1);
         }
     }
+}
 
-    #paperBox {
-        outline: 20px solid var(--paperGradient1);
+#choosedContainer {
+    min-width: 60%;
+    gap: 20px;
+    display: none;
+
+    .playerContainer {
+        width: 50%;
+        flex-direction: column;
+        gap: 70px;
+
+        .playerTitle {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
     }
 
-    #scissorsBox {
-        outline: 20px solid var(--scissorsGradient1);
+    #statusContainer {
+        width: 50%;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        visibility: hidden;
+
+        #status {
+            color: white;
+        }
     }
 
-    #rockBox {
-        outline: 20px solid var(--rockGradient1);
+    .choosedBox {
+        width: 50%;
+        aspect-ratio: 1/1;
+        background-color: white;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: inset 0px -5px 1px rgba(52, 52, 52, 0.459);
+
+        .imageSection {
+            width: 60px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    #circle {
+        width: 50%;
+        aspect-ratio: 1/1;
+        background-color: black;
+        border-radius: 50%;
+        opacity: 15%;
+
     }
 }
 
-.buttonContainer{
+.playAgainBtn {
+    font-family: var(--fontFamily);
+    width: 90%;
+    background-color: white;
+    color: var(--darkText);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+
+    &:hover {
+        color: var(--rockGradient1);
+    }
+}
+
+#mobileStatusContainer {
+    width: 70%;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    display: none;
+
+    #mobileStatus {
+        color: white;
+        text-transform: uppercase;
+
+    }
+}
+
+.buttonContainer {
     font-family: var(--fontFamily);
     position: absolute;
     bottom: 20px;
@@ -171,7 +249,7 @@ main {
     display: flex;
     justify-content: end;
 
-    #rulesBtn{
+    #rulesBtn {
         border: 1px solid white;
         border-radius: 5px;
         padding: 10px;
@@ -184,7 +262,8 @@ main {
     }
 }
 
-.rulesContainer{
+.rulesContainer {
+    display: none;
     position: absolute;
     width: 100%;
     top: 0;
@@ -192,29 +271,175 @@ main {
     background-color: rgba(0, 0, 0, 0.514);
     z-index: 1;
 
-    .rules{
+    .rules {
         width: 25%;
         background-color: white;
         padding: 20px;
         border-radius: 10px;
 
-        .rulesHeader{
+        .rulesHeader {
             display: flex;
             justify-content: space-between;
             margin-bottom: 50px;
 
-            .rulesTiltle{
+            .rulesTiltle {
                 color: var(--darkText);
             }
 
-            #crossBtn{
+            #crossBtn {
                 width: 30px;
                 aspect-ratio: 1/1;
             }
         }
 
-        .rulesImage{
+        .rulesImage {
             padding: 20px;
+        }
+    }
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media(max-width: 1025px) and (min-width: 550px) {
+    #scoreBoard {
+        width: 100%;
+        margin-bottom: 30px;
+
+        .gameName {
+            width: 10%;
+            line-height: 90%;
+            font-size: 20px;
+        }
+
+        .imageSection {
+            width: 10%;
+        }
+    }
+
+    #chooseOneContainer {
+        width: 50%;
+        gap: 50px;
+    }
+
+    #choosedContainer {
+        min-width: 100%;
+    }
+
+    .buttonContainer {
+        #rulesBtn {
+            width: 15%;
+            font-size: 10px;
+        }
+    }
+
+    .rulesContainer {
+        .rules {
+            width: 40%;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    #scoreBoard {
+        width: 100%;
+        margin-bottom: 40px;
+
+        .gameName {
+            width: 10%;
+            line-height: 90%;
+            font-size: 10px;
+        }
+
+        .imageSection {
+            width: 10%;
+        }
+    }
+
+    #chooseOneContainer {
+        width: 90%;
+        gap: 50px;
+
+        .optionBox{
+            .imageSection{
+                width: 40px;
+            }
+        }
+    }
+
+    #choosedContainer {
+        min-width: 100%;
+        padding: 0;
+        gap: 0px;
+
+        #statusContainer{
+            display: none;
+        }
+
+        .playerContainer{
+            .playerTitle{
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .choosedBox{
+            .imageSection{
+                width: 40px;
+            }
+        }
+    }
+
+    #paperBox {
+        outline: 10px solid var(--paperGradient1);
+    }
+    
+    #scissorsBox {
+        outline: 10px solid var(--scissorsGradient1);
+    }
+    
+    #rockBox {
+        outline: 10px solid var(--rockGradient1);
+    }
+
+    #mobileStatusContainer {
+        display: none;
+        margin-top: 50px;
+    }
+
+    .buttonContainer {
+        justify-content: center;
+
+        #rulesBtn {
+            width: 30%;
+            font-size: 10px;
+        }
+    }
+
+    .rulesContainer { 
+        .rules {
+            width: 100%;
+            height: 100vh;
+            border-radius: 0;
+
+            .rulesHeader{
+                margin-top: 30px;
+            }
+            
+            .rulesImage{
+                margin-top: 100px;
+            }
         }
     }
 }
