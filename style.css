@@ -359,11 +359,12 @@ main {
         .gameName {
             width: 10%;
             line-height: 90%;
-            font-size: 10px;
+            font-size: 20px;
+            margin-left: 20px;
         }
 
         .imageSection {
-            width: 10%;
+            width: 20%;
         }
     }
 

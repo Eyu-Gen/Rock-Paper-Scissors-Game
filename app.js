@@ -18,6 +18,7 @@ let clickedOption;
 let randomNumber;
 
 //BGM Volume low...
+bgm.play();
 bgm.volume = 0.5;
 
 //Rules container Display when rulesBtn is chlicked...
